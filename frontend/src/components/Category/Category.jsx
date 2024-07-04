@@ -215,7 +215,7 @@ function Category() {
             <div className="text-lg font-normal">Trending</div>
           </h2>
 
-          <button className=" flex items-center underline   text-lg text-bold text-blue-600 px-3 py-1 rounded-md  hover:border hover:border-blue-400 hover:no-underline">
+          <button className=" flex items-center underline   text-lg text-bold text-blue-600 px-3 py-1 border border-transparent rounded-md   hover:border-blue-400 hover:no-underline">
             <span>
               <SlEnergy className="mr-2"/>
             </span>
