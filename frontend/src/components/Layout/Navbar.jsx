@@ -1,16 +1,18 @@
-import { FiSearch, FiPlus } from 'react-icons/fi';
+import { FiSearch, FiPlus } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="bg-white py-3 fixed top-0 left-0 right-0 z-20 ">
       <div className="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <div className="bg-gray-800 p-1.5 rounded">
-            <span className="text-white text-xl">👌</span>
+        <NavLink to={"/"}>
+          <div className="flex items-center space-x-2">
+            <div className="bg-gray-800 p-1.5 rounded">
+              <span className="text-white text-xl">👌</span>
+            </div>
+            <span className="text-2xl font-bold">hamrobazar</span>
           </div>
-          <span className="text-2xl font-bold">hamrobazar</span>
-        </div>
+        </NavLink>
 
         {/* Search Bar */}
         <div className="flex-1 mx-4 max-w-xl">
@@ -18,7 +20,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search for anything"
-              className="w-full border border-gray-300 rounded-lg py-3 px-4 pl-10 focus:outline-none"
+              className="w-full border border-gray-600 rounded-lg py-2 px-4 pl-10 focus:outline-none"
             />
             <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>
