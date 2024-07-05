@@ -2,7 +2,7 @@ import { FiSearch, FiPlus } from 'react-icons/fi';
 
 const Navbar = () => {
   return (
-    <nav className="bg-white py-3 fixed top-0 left-0 right-0 z-10 shadow-md">
+    <nav className="bg-white py-3 fixed top-0 left-0 right-0 z-20 ">
       <div className="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -47,4 +47,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

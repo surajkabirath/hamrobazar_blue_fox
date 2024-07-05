@@ -1,31 +1,51 @@
+import { NavLink } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="flex flex-col justify-center items-start py-4 text-xs font-semibold ml-5  ">
       <div className="flex space-x-4 mb-6 ">
-        <a
-          href="#hb-select"
+        <NavLink
+          to={"/hb-select"}
           className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
         >
           HB Select
-        </a>
-        <a href="#terms" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        </NavLink>
+        <NavLink
+          to={"/terms"}
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           Terms of Use
-        </a>
-        <a href="#safety-tips" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        </NavLink>
+        <NavLink
+          to={"/safety-tips"}
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           Safety Tips
-        </a>
+        </NavLink>
       </div>
       <div className="flex space-x-4">
-        <a href="#posting-rules" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        <NavLink
+          to={"/posting-rules"}
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           Posting Rules
-        </a>
-        <a href="#faq" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        </NavLink>
+        <NavLink
+          to={"/faq"}
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           FAQ
-        </a>
-        <a href="#contact" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        </NavLink>
+        <NavLink
+          to={"/contact"}
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           Contact
-        </a>
-        <a href="#report-bugs" className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out">
+        </NavLink>
+        <a
+          href="mailto:support@hamrobazar.com"
+          className="text-gray-700 inline-block border-b border-transparent hover:border-blue-400 hover:text-blue-700 pb-1 transition duration-300 ease-in-out"
+        >
           Report Bugs
         </a>
       </div>
