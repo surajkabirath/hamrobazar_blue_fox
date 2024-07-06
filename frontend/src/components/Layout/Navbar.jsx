@@ -2,11 +2,15 @@ import { useState } from "react";
 import { FiSearch, FiPlus } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import PostForm from "../PostForm/Postform";
+import ProfileCart from "../Auth/ProfileCart";
 
 const Navbar = () => {
   const[postOpen, setPostOpen] = useState(false)
   const handleOpen = ()=>{setPostOpen(true)}
   const handleClose = ()=>{setPostOpen(false)}
+  const handleLogout = () => {
+    console.log("Logout");
+  };
   return (
     <nav className="bg-white py-3 fixed top-0 left-0 right-0 z-20 ">
       <div className="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
@@ -43,7 +47,7 @@ const Navbar = () => {
           </button>
         
           <span className="text-gray-800">|</span>
-          <NavLink to={"login"}className="text-gray-800 hover:text-blue-600">
+          {/* <NavLink to={"login"}className="text-gray-800 hover:text-blue-600">
             Login
           </NavLink>
           <NavLink
@@ -51,7 +55,8 @@ const Navbar = () => {
             className="border border-gray-800 text-gray-800 px-3 py-1 rounded-md hover:bg-black hover:text-white"
           >
             Sign Up
-          </NavLink>
+          </NavLink> */}
+          <ProfileCart handleLogout={handleLogout} />
         </div>
       </div>
       <PostForm postOpen= {postOpen} handleClose={handleClose}/>
