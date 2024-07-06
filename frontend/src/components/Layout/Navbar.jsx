@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { FiSearch, FiPlus } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
+import PostForm from "../PostForm/Postform";
 
 const Navbar = () => {
+  const[postOpen, setPostOpen] = useState(false)
+  const handleOpen = ()=>{setPostOpen(true)}
+  const handleClose = ()=>{setPostOpen(false)}
   return (
     <nav className="bg-white py-3 fixed top-0 left-0 right-0 z-20 ">
       <div className="max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
@@ -31,10 +36,12 @@ const Navbar = () => {
 
         {/* Post for Free Button */}
         <div className="flex items-center space-x-9">
-          <button className="group flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black hover:border-gray-900 border-2">
+          
+          <button onClick={handleOpen} className="group flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black hover:border-gray-900 border-2">
             <FiPlus className="bg-white text-black border rounded-md text-xl group-hover:bg-black group-hover:text-white" />
             <span className="text-xs">Post for free</span>
           </button>
+        
           <span className="text-gray-800">|</span>
           <NavLink to={"login"}className="text-gray-800 hover:text-blue-600">
             Login
@@ -47,6 +54,7 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
+      <PostForm postOpen= {postOpen} handleClose={handleClose}/>
     </nav>
   );
 };
