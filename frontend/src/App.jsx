@@ -1,4 +1,5 @@
 
+import Signup from "./components/Auth/Signup";
 import Contact from "./components/FooterContaint/Contact";
 import Faq from "./components/FooterContaint/Faq";
 import Hbselect from "./components/FooterContaint/Hbselect";
@@ -17,6 +18,7 @@ const App = () => {
          
         <Routes>
         <Route path="/" element ={<Header/>}/> 
+        <Route path="/signup" element ={<Signup/>}/> 
         <Route path="/hb-select" element ={<Hbselect/>}/> 
           <Route path="/faq" element ={<Faq/>}/> 
           <Route path="/terms" element ={<Terms/>}/> 

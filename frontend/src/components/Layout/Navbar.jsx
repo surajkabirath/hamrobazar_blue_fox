@@ -12,6 +12,9 @@ const Navbar = () => {
             </div>
             <span className="text-2xl font-bold">hamrobazar</span>
           </div>
+            {/* <div>
+                    <img src="images.png" alt="" />
+                </div> */}
         </NavLink>
 
         {/* Search Bar */}
@@ -36,12 +39,12 @@ const Navbar = () => {
           <a href="#login" className="text-gray-800 hover:text-blue-600">
             Login
           </a>
-          <a
-            href="#signup"
+          <NavLink
+            to={"/signup"}
             className="border border-gray-800 text-gray-800 px-3 py-1 rounded-md hover:bg-black hover:text-white"
           >
             Sign Up
-          </a>
+          </NavLink>
         </div>
       </div>
     </nav>

@@ -163,32 +163,40 @@ const UpLoad = () => {
           className="bg-white overflow-hidden sticky "
           style={{ top: navbarHeight, zIndex: 10 }}
         >
-           <div className="flex justify-between mx-4 py-6 items-center border-b border-gray-600 pb-2">
-        <div
-          className={`flex items-center font-semibold cursor-pointer ${
-            activeTab === 'uploads' ? 'border-b-2 border-indigo-500' : 'border-b-2 border-transparent'
-          }`}
-          onClick={() => handleTabClick('uploads')}
-        >
+         <div className="flex justify-between mx-4 py-6 items-center border-b border-gray-600">
+        <div className="flex items-center font-semibold cursor-pointer">
           <HiUpload
             size={24}
-            className="border p-1 mr-1 border-gray-300 rounded-md"
+            className={`border p-1 mr-1 border-gray-300 rounded-md ${
+              activeTab === 'uploads' ? 'border-b-2 border-indigo-500' : ''
+            }`}
           />
-          Latest Uploads
+          <span
+            className={`cursor-pointer ${
+              activeTab === 'uploads' ? 'text-indigo-500' : 'text-gray-700'
+            }`}
+            onClick={() => handleTabClick('uploads')}
+          >
+            Latest Uploads
+          </span>
         </div>
-        <div
-          className={`flex items-center font-semibold cursor-pointer ${
-            activeTab === 'recommended' ? 'border-b-2 border-indigo-500' : 'border-b-2 border-transparent'
-          }`}
-          onClick={() => handleTabClick('recommended')}
-        >
+        <div className="flex items-center font-semibold cursor-pointer ml-6">
           <FaRegThumbsUp
             size={24}
-            className="border p-1 mr-1 border-gray-300 rounded-md"
+            className={`border p-1 mr-1 border-gray-300 rounded-md ${
+              activeTab === 'recommended' ? 'border-b-2 border-indigo-500' : ''
+            }`}
           />
-          Recommended
+          <span
+            className={`cursor-pointer ${
+              activeTab === 'recommended' ? 'text-indigo-500' : 'text-gray-700'
+            }`}
+            onClick={() => handleTabClick('recommended')}
+          >
+            Recommended
+          </span>
         </div>
-        <div className="cursor-pointer" onClick={toggleView}>
+        <div className="cursor-pointer ml-6" onClick={toggleView}>
           {isListView ? (
             <BsGrid className="text-2xl text-black" />
           ) : (
