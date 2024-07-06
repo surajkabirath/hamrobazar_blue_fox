@@ -36,9 +36,9 @@ const Navbar = () => {
             <span className="text-xs">Post for free</span>
           </button>
           <span className="text-gray-800">|</span>
-          <a href="#login" className="text-gray-800 hover:text-blue-600">
+          <NavLink to={"login"}className="text-gray-800 hover:text-blue-600">
             Login
-          </a>
+          </NavLink>
           <NavLink
             to={"/signup"}
             className="border border-gray-800 text-gray-800 px-3 py-1 rounded-md hover:bg-black hover:text-white"

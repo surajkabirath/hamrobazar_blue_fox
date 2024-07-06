@@ -1,4 +1,6 @@
 
+import ForgotPassword from "./components/Auth/Forgotpassword";
+import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Contact from "./components/FooterContaint/Contact";
 import Faq from "./components/FooterContaint/Faq";
@@ -19,6 +21,8 @@ const App = () => {
         <Routes>
         <Route path="/" element ={<Header/>}/> 
         <Route path="/signup" element ={<Signup/>}/> 
+        <Route path="/login" element ={<Login/>}/> 
+        <Route path="/forgotpassword" element ={<ForgotPassword/>}/>
         <Route path="/hb-select" element ={<Hbselect/>}/> 
           <Route path="/faq" element ={<Faq/>}/> 
           <Route path="/terms" element ={<Terms/>}/> 

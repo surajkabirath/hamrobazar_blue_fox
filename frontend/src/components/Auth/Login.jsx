@@ -4,35 +4,29 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { NavLink } from "react-router-dom";
 
-const Signup = () => {
-  const [name, setName] = useState("");
+const Login = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
+
   const [errors, setErrors] = useState({ name: "", phone: "", password: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let validationErrors = {};
-    if (!name) validationErrors.name = "Full Name is required.";
+
     if (!phone) validationErrors.phone = "Phone Number is required.";
     if (!password) validationErrors.password = "Password is required.";
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
       // Proceed with form submission (e.g., API call)
-      console.log("Form submitted", { name, phone, password });
+      console.log("Form submitted", {  phone, password });
     }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  };
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-    if (errors.name) setErrors((prev) => ({ ...prev, name: "" }));
   };
 
   const handlePhoneChange = (phone) => {
@@ -90,28 +84,8 @@ const Signup = () => {
                     </svg>
                   </div>
                 </div>
-                <h2 className="text-2xl font-semibold  mb-6">Sign Up</h2>
+                <h2 className="text-2xl font-semibold  mb-6">Login</h2>
                 <form className="space-y-6 pr-2" onSubmit={handleSubmit}>
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={handleNameChange}
-                      placeholder="Full Name"
-                      className={`block w-full mt-1 px-3 py-2 border ${
-                        errors.name ? "border-red-500" : "border-gray-300"
-                      } rounded-md focus:outline-none focus:ring-blue-300 focus:border-blue-300 sm:text-sm`}
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-                    )}
-                  </div>
                   <div>
                     <label
                       htmlFor="phone"
@@ -175,45 +149,24 @@ const Signup = () => {
                       </p>
                     )}
                   </div>
-                  <div className="flex items-center">
-                    <input
-                      id="terms"
-                      type="checkbox"
-                      checked={termsAccepted}
-                      onChange={(e) => setTermsAccepted(e.target.checked)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-300 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="terms"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
-                      I hereby accept all the{" "}
-                      <NavLink
-                        to={"/terms"}
-                        className="text-indigo-600 hover:text-indigo-500"
-                      >
-                        Terms & Conditions
-                      </NavLink>{" "}
-                      of Hamrobazar.
-                    </label>
-                  </div>
+
                   <div>
                     <button
                       type="submit"
-                      className={`w-full mt-4 text-black border border-gray-300  focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center ${
-                        !termsAccepted && "opacity-50 cursor-not-allowed"
-                      }`}
-                      disabled={!termsAccepted}
+                      className="w-full mt-4 text-black border border-gray-300  focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center"
                     >
-                      Sign Up
+                      Login
                     </button>
+                    <NavLink to={"/forgotpassword"} className="text-sm font-semibold text-gray-800 py-5 underline">
+                      Forgot Password?
+                    </NavLink>
                     <p className="text-sm font-semibold text-gray-900 py-5">
-                      Already have an account?{" "}
+                      Don’t have an account?{" "}
                       <NavLink
                         className="font-medium text-primary-600 underline"
-                        to={"/login"}
+                        to={"/signup"}
                       >
-                        Login here
+                        Sign Up
                       </NavLink>
                     </p>
                   </div>
@@ -227,4 +180,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
