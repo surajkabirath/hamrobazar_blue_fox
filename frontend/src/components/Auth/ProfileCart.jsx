@@ -48,39 +48,43 @@ const ProfileCart = ({ handleLogout }) => {
 
       {isOpen && (
         <div className="absolute right-0 mt-2 z-10 bg-gray-50 divide-y divide-gray-100 rounded-lg shadow w-[14.5625rem]">
-          <div className="flex items-center mb-4 mx-2 hover:bg-gray-300 rounded-md px-1">
-            <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-              <span className="text-xl">👤</span>
+          <NavLink to={"/profile"}>
+            <div className="flex items-center mb-4 mx-2 hover:bg-gray-300 rounded-md px-1">
+              <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                <span className="text-xl">👤</span>
+              </div>
+              <div className="ml-3">
+                <div className="font-semibold text-gray-800">
+                  Suraj Kabirath
+                </div>
+                <a href="#profile" className="text-blue-500 text-sm ">
+                  Visit Profile
+                </a>
+              </div>
+              <div className="ml-auto">
+                <button className="text-gray-500">
+                  <FaArrowRightLong />
+                </button>
+              </div>
             </div>
-            <div className="ml-3">
-              <div className="font-semibold text-gray-800">Suraj Kabirath</div>
-              <a href="#profile" className="text-blue-500 text-sm ">
-                Visit Profile
-              </a>
-            </div>
-            <div className="ml-auto">
-              <button className="text-gray-500">
-                <FaArrowRightLong />
-              </button>
-             
-            </div>
-          
-          </div>
-       
-         
+          </NavLink>
+
           <div className="space-y-2 mx-2 py-2">
             <NavLink to={"/contact"}>
-            <button className="flex items-center w-full px-2 py-1 text-left hover:bg-gray-200 rounded-md">
-              <FaPhoneAlt className="mr-3 text-gray-500" />
-              <span>Contact Support</span>
-            </button>
+              <button className="flex items-center w-full px-2 py-2 text-left hover:bg-gray-200 rounded-md">
+                <FaPhoneAlt className="mr-3 text-gray-500" />
+                <span>Contact Support</span>
+              </button>
             </NavLink>
-            <button className="flex items-center w-full px-2 py-1 text-left hover:bg-gray-200 rounded-md">
-              <FiSettings className="mr-3 text-gray-500" />
-              <span>Setting</span>
-            </button>
+            <NavLink to={"/setting/updatepassword"}>
+              <button className="flex items-center w-full px-2 py-2 text-left hover:bg-gray-200 rounded-md">
+                <FiSettings className="mr-3 text-gray-500" />
+                <span>Setting</span>
+              </button>
+            </NavLink>
+
             <button
-              className="flex items-center w-full px-2 py-1 text-left hover:bg-gray-200 rounded-md"
+              className="flex items-center w-full px-2 py-2 text-left hover:bg-gray-200 rounded-md"
               onClick={handleLogout}
             >
               <FiLogOut className="mr-3  text-gray-500" />

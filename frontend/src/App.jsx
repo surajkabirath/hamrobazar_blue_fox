@@ -1,6 +1,8 @@
 import ForgotPassword from "./components/Auth/Forgotpassword";
 import Login from "./components/Auth/Login";
+import Profile from "./components/Auth/Profile";
 import Signup from "./components/Auth/Signup";
+import UpdatePassword from "./components/Auth/UpdatePassword";
 import Contact from "./components/FooterContaint/Contact";
 import Faq from "./components/FooterContaint/Faq";
 import Hbselect from "./components/FooterContaint/Hbselect";
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/setting/updatepassword" element={<UpdatePassword />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/hb-select" element={<Hbselect />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/terms" element={<Terms />} />
