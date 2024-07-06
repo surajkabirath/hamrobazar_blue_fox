@@ -2,16 +2,14 @@ import { useState } from "react";
 import { FaTimes, FaEye } from "react-icons/fa";
 import CircularProgressBar from "./CircularProgressbar";
 
-const PostForm = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const PostForm = ({postOpen,handleClose}) => {
+
   const [progress, setProgress] = useState(25);
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({ title: "", images: "" });
 
-  const handleCloses = () => {
-    setIsOpen(false);
-  };
+ 
 
   const handleImageChange = (e) => {
     if (e.target.files) {
@@ -65,12 +63,12 @@ const PostForm = () => {
 
   return (
     <>
-      {isOpen && (
+      {postOpen && (
         <div  className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg w-full max-w-screen-md mx-auto p-4 overflow-y-auto max-h-screen">
             <div className="flex justify-between items-center border-b pb-2">
               <h2 className="text-lg font-semibold">Post Ad</h2>
-              <button onClick={handleCloses} className="text-gray-600">
+              <button onClick={handleClose} className="text-gray-600">
                 <svg
                   className="w-6 h-6"
                   fill="none"

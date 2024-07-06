@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaTimes, FaEye } from "react-icons/fa";
 import CircularProgressBar from "./CircularProgressbar";
 
@@ -58,7 +58,7 @@ const PostFormsec = () => {
             </div>
             <div className="py-4">
               <div className="flex items-center mb-4">
-                <CircularProgressBar value={progress} text="1 of 4" />
+                <CircularProgressBar value={progress} text="2 of 4" />
                 <div className="flex items-start flex-col ml-4">
                   <span className="text-gray-600">Upload Image</span>
                   <span className="text-gray-400 ml-auto">Next Step: Details</span>

@@ -10,7 +10,7 @@ import Terms from "./components/FooterContaint/Term";
 import Header from "./components/Home/Header";
 import Navbar from "./components/Layout/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PostForm from "./components/PostForm/Postform";
+
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Header />} />
-          <Route path="/post-for-free" element={<PostForm />} />
+          
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
