@@ -3,11 +3,17 @@ import { FiSearch, FiPlus } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import PostForm from "../PostForm/Postform";
 import ProfileCart from "../Auth/ProfileCart";
-
+import { BsChatSquareDots } from "react-icons/bs";
+import { FaRegBell } from "react-icons/fa";
+import Notifucation from "../NotifiacationMessage/Notification";
 const Navbar = () => {
-  const[postOpen, setPostOpen] = useState(false)
-  const handleOpen = ()=>{setPostOpen(true)}
-  const handleClose = ()=>{setPostOpen(false)}
+  const [postOpen, setPostOpen] = useState(false);
+  const handleOpen = () => {
+    setPostOpen(true);
+  };
+  const handleClose = () => {
+    setPostOpen(false);
+  };
   const handleLogout = () => {
     console.log("Logout");
   };
@@ -21,7 +27,7 @@ const Navbar = () => {
             </div>
             <span className="text-2xl font-bold">hamrobazar</span>
           </div>
-            {/* <div>
+          {/* <div>
                     <img src="images.png" alt="" />
                 </div> */}
         </NavLink>
@@ -37,15 +43,21 @@ const Navbar = () => {
             <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>
         </div>
-
+        <div className="flex justify-between mx-10 cursor-pointer">
+          <BsChatSquareDots className="text-2xl " />
+          {/* <FaRegBell className="ml-10 text-2xl" /> */}
+          <Notifucation/>
+        </div>
         {/* Post for Free Button */}
         <div className="flex items-center space-x-9">
-          
-          <button onClick={handleOpen} className="group flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black hover:border-gray-900 border-2">
+          <button
+            onClick={handleOpen}
+            className="group flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black hover:border-gray-900 border-2"
+          >
             <FiPlus className="bg-white text-black border rounded-md text-xl group-hover:bg-black group-hover:text-white" />
             <span className="text-xs">Post for free</span>
           </button>
-        
+
           <span className="text-gray-800">|</span>
           {/* <NavLink to={"login"}className="text-gray-800 hover:text-blue-600">
             Login
@@ -59,7 +71,9 @@ const Navbar = () => {
           <ProfileCart handleLogout={handleLogout} />
         </div>
       </div>
-      <PostForm postOpen= {postOpen} handleClose={handleClose}/>
+      <PostForm postOpen={postOpen} handleClose={handleClose} />
+      
+      
     </nav>
   );
 };

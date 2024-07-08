@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "tailwindcss/tailwind.css";
 import { TbCameraPlus } from "react-icons/tb";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa6";
 import nepalData from "../../data/Data"; // Assuming nepalData is in the same directory
@@ -78,7 +79,8 @@ const ProfileUpdateModal = ({
     : [];
 
   const cities = selectedDistrict
-    ? districts.find((district) => district.name === selectedDistrict)?.cities || []
+    ? districts.find((district) => district.name === selectedDistrict)
+        ?.cities || []
     : [];
 
   return (
@@ -146,7 +148,7 @@ const ProfileUpdateModal = ({
             />
           </div>
           <div>
-            <label className="block text-gray-700">Date Of Birth</label>
+            <label className="block ">Date Of Birth</label>
             <DatePicker
               selected={formData.dateOfBirth}
               onChange={handleDateChange}
@@ -210,7 +212,6 @@ const ProfileUpdateModal = ({
               ))}
             </select>
           </div>
-
 
           <div>
             <label className="block text-gray-700">Locality</label>
