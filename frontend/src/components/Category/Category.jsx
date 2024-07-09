@@ -8,6 +8,7 @@ import { SlEnergy } from "react-icons/sl";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import UpLoad from "./Upload";
+import { NavLink } from "react-router-dom";
 
 const categories = [
   { name: "HB Select", count: 19, icon: <FiStar /> },
@@ -214,13 +215,14 @@ function Category() {
             />
             <div className="text-lg font-normal">Trending</div>
           </h2>
-
+<NavLink to={"/boost"}>
           <button className=" flex items-center underline   text-lg text-bold text-blue-600 px-3 py-1 border border-transparent rounded-md   hover:border-blue-400 hover:no-underline">
             <span>
               <SlEnergy className="mr-2"/>
             </span>
             Boost Ads
           </button>
+          </NavLink>
         </div>
 
         <div className="overflow-x-auto m-auto ml-5">

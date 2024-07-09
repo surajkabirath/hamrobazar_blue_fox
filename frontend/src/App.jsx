@@ -9,6 +9,7 @@ import Hbselect from "./components/FooterContaint/Hbselect";
 import Rules from "./components/FooterContaint/Rules";
 import Safety from "./components/FooterContaint/Safety";
 import Terms from "./components/FooterContaint/Term";
+import BoostSection from "./components/Home/BoostSection";
 import Header from "./components/Home/Header";
 import Navbar from "./components/Layout/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -34,6 +35,9 @@ const App = () => {
           <Route path="/safety-tips" element={<Safety />} />
           <Route path="/posting-rules" element={<Rules />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/boost" element={<BoostSection />} />
+          
+
         </Routes>
       </BrowserRouter>
     </>
