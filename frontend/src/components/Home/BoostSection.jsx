@@ -133,7 +133,7 @@ const BoostSection = () => {
         </div>
 
         {/* Boost Listing Form */}
-        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col w-full sm:px-2 md:px-6">
+        <div className="bg-white shadow-md rounded-lg p-6 flex flex-col w-full sm:w-full sm:px-2 md:w-auto md:px-6">
   <div className="bg-[#0071b5] text-white text-center font-bold text-xl p-3 rounded-t-lg">
     Boost your listing
   </div>
@@ -165,7 +165,9 @@ const BoostSection = () => {
         <input
           placeholder="First Name"
           value={firstName}
-          onChange={(e) => handleInputChange("firstName", e.target.value)}
+          onChange={(e) =>
+            handleInputChange("firstName", e.target.value)
+          }
           type="text"
           className={`mt-2 block w-full py-3 px-3 border border-gray-300 bg-white ${
             errors.firstName ? "border-red-500" : "border-gray-300"
@@ -179,7 +181,9 @@ const BoostSection = () => {
         <input
           type="text"
           value={lastName}
-          onChange={(e) => handleInputChange("lastName", e.target.value)}
+          onChange={(e) =>
+            handleInputChange("lastName", e.target.value)
+          }
           placeholder="Last Name"
           className={`mt-2 block w-full py-3 px-3 border border-gray-300 bg-white ${
             errors.lastName ? "border-red-500" : "border-gray-300"
