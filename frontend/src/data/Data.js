@@ -1,4 +1,27 @@
-const nepalData = {
+
+export const categoriesItem = [
+  "Electronics, TVs & More",
+  "Mobile & Accessories",
+  "Mobile Phones & Accessories",
+  "Apparels & Accessories",
+  "Beauty & Health",
+  "Books & Learning",
+  "Business & Industrial",
+  "Computers & Peripherals",
+  "Events & Happenings",
+  "Electronics, TVs & More",
+  "Mobile & Accessories",
+  "Mobile Phones & Accessories",
+  "Apparels & Accessories",
+  "Beauty & Health",
+  "Books & Learning",
+  "Business & Industrial",
+  "Computers & Peripherals",
+  "Events & Happenings",
+];
+
+
+export const nepalData = {
     provinces: [
       {
         name: "Province No. 1",
@@ -764,4 +787,3 @@ const nepalData = {
     ]
   };
 
-  export default nepalData

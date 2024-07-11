@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "tailwindcss/tailwind.css";
 import { TbCameraPlus } from "react-icons/tb";
 import { FaToggleOn, FaToggleOff } from "react-icons/fa6";
-import nepalData from "../../data/Data"; // Assuming nepalData is in the same directory
+import {nepalData} from "../../data/Data"; // Assuming nepalData is in the same directory
 
 const ProfileUpdateModal = ({
   isProfileOpen,

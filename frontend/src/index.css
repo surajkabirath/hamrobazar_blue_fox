@@ -53,3 +53,7 @@
 .react-datepicker__day--outside-month {
   color: #666; /* Adjust color as needed */
 }
+.select-category {
+  height: 100%; /* Match the height of the parent div */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

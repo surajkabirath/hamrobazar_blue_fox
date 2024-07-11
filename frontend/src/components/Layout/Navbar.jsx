@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { FiSearch, FiPlus } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
-import PostForm from "../PostForm/Postform";
+
 import ProfileCart from "../Auth/ProfileCart";
 import { BsChatSquareDots } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import Notifucation from "../NotifiacationMessage/Notification";
+import Blank from "../PostForm/Blank";
+import { useStep } from "../../main";
 const Navbar = () => {
   const [postOpen, setPostOpen] = useState(false);
+  const {setActiveStep} = useStep();
   const handleOpen = () => {
     setPostOpen(true);
   };
   const handleClose = () => {
+    setActiveStep(1);
     setPostOpen(false);
   };
   const handleLogout = () => {
@@ -71,7 +75,7 @@ const Navbar = () => {
           <ProfileCart handleLogout={handleLogout} />
         </div>
       </div>
-      <PostForm postOpen={postOpen} handleClose={handleClose} />
+      <Blank postOpen={postOpen} handleClose={handleClose} />
       
       
     </nav>
