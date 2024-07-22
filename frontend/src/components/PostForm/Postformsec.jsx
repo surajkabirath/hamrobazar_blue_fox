@@ -7,31 +7,30 @@ import { categoriesItem, conditionItems } from "../../data/Data";
 const Postformsec = () => {
   const { activeStep, setActiveStep } = useStep();
   const [progress, setProgress] = useState((activeStep / 2) * 100);
-  const [formData, setFormData] = useState({
-    category: "",
-    condition: "",
-    location: "",
-    description: "",
-    delivery: false,
-    isAdultContent: false,
-  });
+  const [category, setCategory] = useState("");
+  const [condition, setCondition] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
+  const [delivery, setDelivery] = useState(false);
+  const [isAdultContent, setIsAdultContent] = useState(false);
   const [errors, setErrors] = useState({
     category: "",
     condition: "",
     location: "",
     description: "",
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let validationErrors = {};
-    if (!formData.category)
-      validationErrors.formData.category = "Category is required.";
-    if (!formData.condition)
-      validationErrors.formData.condition = "Condition is required.";
-    if (!formData.location)
-      validationErrors.formData.location = "Location is required.";
-    if (!formData.description)
-      validationErrors.formData.description = "Description is required.";
+    if (!category)
+      validationErrors.category = "Category is required.";
+    if (!condition)
+      validationErrors.condition = "Condition is required.";
+    if (!location)
+      validationErrors.location = "Location is required.";
+    if (!description)
+      validationErrors.description = "Description is required.";
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
@@ -39,14 +38,39 @@ const Postformsec = () => {
       console.log("Form submitted");
     }
   };
-
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    const { name, value,  checked } = e.target;
+    switch (name) {
+     
+      case 'category':
+        setCategory(value);
+        if (errors.category) setErrors((prev) => ({ ...prev, category: "" }));
+        break;
+      case 'condition':
+        setCondition(value);
+        if (errors.condition) setErrors((prev) => ({ ...prev, condition: "" }));
+        break;
+      case 'location':
+        setLocation(value);
+        if (errors.location) setErrors((prev) => ({ ...prev, location: "" }));
+        break;
+      case 'description':
+        setDescription(value);
+        if (errors.description) setErrors((prev) => ({ ...prev, description: "" }));
+        break;
+      case 'delivery':
+        setDelivery(checked);
+        if (errors.delivery) setErrors((prev) => ({ ...prev, delivery: "" }));
+        break;
+      case 'isAdultContent':
+        setIsAdultContent(checked);
+        if (errors.isAdultContent) setErrors((prev) => ({ ...prev, isAdultContent: "" }));
+        break;
+      default:
+        break;
+    }
   };
+
 
   const handlePrevious = () => {
     setActiveStep((current) => current - 1);
@@ -80,7 +104,7 @@ const Postformsec = () => {
               <div className="relative">
                 <select
                   name="category"
-                  value={formData.category}
+                  value={category}
                   onChange={handleChange}
                   className=" category-select mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
@@ -97,7 +121,7 @@ const Postformsec = () => {
               <div className="relative">
                 <select
                   name="condition"
-                  value={formData.condition}
+                  value={condition}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
@@ -113,18 +137,18 @@ const Postformsec = () => {
               </label>
               <input
                 name="location"
-                value={formData.location}
+                value={location}
                 onChange={handleChange}
                 className={`mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2  ${
-                  errors.formData.location
+                  errors.location
                     ? "border-red-500"
                     : "border-gray-300"
                 }`}
                 placeholder="Entire Nepal"
               />
-              {errors.formData.location && (
+              {errors.location && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.formData.location}
+                  {errors.location}
                 </p>
               )}
             </div>
@@ -132,14 +156,18 @@ const Postformsec = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Location Radius
               </label>
+              <div className="flex justify-between items-center">
+              <small className=" text-gray-400">Hide my precise location</small>
               <input
                 name="locationRadius"
                 type="checkbox"
-                checked={formData.locationRadius}
+                checked={''}
                 onChange={handleChange}
                 className="mt-1"
               />
-              <span className="ml-2">Hide my precise location</span>
+              </div>
+          
+              
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -147,34 +175,38 @@ const Postformsec = () => {
               </label>
               <textarea
                 name="description"
-                value={formData.description}
+                value={description}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 rows="4"
                 maxLength="500"
               ></textarea>
-              <small className="text-gray-500">/500</small>
+              <div className="flex justify-between items-center">
+              <p>Add all the product or service specifications.</p>
+              <small className="text-gray-500">0/500</small>
+              </div>
+   
             </div>
-            <div>
+            <div className="flex justify-between items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Delivery
               </label>
               <input
                 name="delivery"
                 type="checkbox"
-                checked={formData.delivery}
+                checked={delivery}
                 onChange={handleChange}
                 className="mt-1"
               />
             </div>
-            <div>
+            <div className="flex justify-between items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Is Adult Content?
               </label>
               <input
                 name="isAdultContent"
                 type="checkbox"
-                checked={formData.isAdultContent}
+                checked={isAdultContent}
                 onChange={handleChange}
                 className="mt-1"
               />
