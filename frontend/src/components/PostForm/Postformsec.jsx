@@ -72,7 +72,7 @@ const Postformsec = () => {
             </span>
           </div>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Category*
@@ -82,8 +82,7 @@ const Postformsec = () => {
                   name="category"
                   value={formData.category}
                   onChange={handleChange}
-                  className=" category-select mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto"
-                  placeholder="Category*"
+                  className=" category-select mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
                   {categoriesItem.map((category, index) => (
                     <option key={index}>{category}</option>
@@ -100,7 +99,7 @@ const Postformsec = () => {
                   name="condition"
                   value={formData.condition}
                   onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
                   {conditionItems.map((condition, index) => (
                     <option key={index}>{condition}</option>
@@ -116,9 +115,18 @@ const Postformsec = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                className={`mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2  ${
+                  errors.formData.location
+                    ? "border-red-500"
+                    : "border-gray-300"
+                }`}
                 placeholder="Entire Nepal"
               />
+              {errors.formData.location && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.formData.location}
+                </p>
+              )}
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
