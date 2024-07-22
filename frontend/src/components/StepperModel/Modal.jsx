@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import PostFormsec from "../PostForm/Postformsec";
+import PostForm from "../PostForm/Postform";
 
 
 const Modal = () => {
@@ -32,14 +33,14 @@ const Modal = () => {
 
   return (
     <div>
-      {/* {step === 1 && (
-        <PostFormStep1
+      {step === 1 && (
+        <PostForm
           formData={formData}
           handleChange={handleChange}
           nextStep={nextStep}
         />
-      )} */}
-      {step === 1 && (
+      )}
+      {step === 2 && (
         <PostFormsec
           formData={formData}
           handleChange={handleChange}

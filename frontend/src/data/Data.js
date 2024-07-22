@@ -1,5 +1,6 @@
 
 export const categoriesItem = [
+  "Category*",
   "Electronics, TVs & More",
   "Mobile & Accessories",
   "Mobile Phones & Accessories",
@@ -20,7 +21,13 @@ export const categoriesItem = [
   "Events & Happenings",
 ];
 
-
+export const conditionItems= [
+  "Condition*",
+  "Brand new",
+  "Like new",
+  "Used",
+  "Not working",
+]
 export const nepalData = {
     provinces: [
       {
