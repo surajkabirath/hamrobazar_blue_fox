@@ -83,8 +83,8 @@ const Postformsec = () => {
           <div className="flex items-center mb-4">
             <CircularProgressBar value={progress} text="2 of 4" />
             <div className="flex items-start flex-col ml-4">
-              <span className="text-gray-600">Upload Image</span>
-              <span className="text-gray-400 ml-auto">Next Step: Details</span>
+              <span className="text-gray-600">Details</span>
+              <span className="text-gray-400 ml-auto">Next Step: Price</span>
             </div>
           </div>
           <div className="bg-gray-100 p-2 rounded mb-4 flex">
@@ -178,7 +178,7 @@ const Postformsec = () => {
                 value={description}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                rows="4"
+                rows="3"
                 maxLength="500"
               ></textarea>
               <div className="flex justify-between items-center">
