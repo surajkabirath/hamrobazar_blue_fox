@@ -33,8 +33,8 @@ const Blank = ({ postOpen, handleClose }) => {
               </button>
             </div>
             
-            {/* {activeStep === 1 && <PostForm />} */}
-            {activeStep === 1 && <Postformsec />}
+            {activeStep === 1 && <PostForm />}
+            {activeStep === 2 && <Postformsec />}
         
           </div>
         </div>

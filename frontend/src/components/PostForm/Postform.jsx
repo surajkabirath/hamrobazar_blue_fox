@@ -83,7 +83,7 @@ const PostForm = () => {
               Did you know? Completing your profile increases your sales.
             </p>
             <span className="font-semibold text-sm hover:underline cursor-pointer">
-              Complete your profile
+              Complete your profile  
             </span>
           </div>
           <div>
