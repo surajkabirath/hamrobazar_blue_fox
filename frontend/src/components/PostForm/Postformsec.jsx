@@ -1,35 +1,30 @@
 import { useState } from "react";
-import { useStep } from "../../main";
 import { MdArrowBack } from "react-icons/md";
 import CircularProgressBar from "./CircularProgressbar";
 import { categoriesItem, conditionItems } from "../../data/Data";
+import { useAppContext } from "../../context/Context";
+import { Link } from "react-router-dom";
 
 const Postformsec = () => {
-  const { activeStep, setActiveStep } = useStep();
+  const {
+    activeStep,
+    prevStep,
+    nextStep,
+    formData,
+    handleChange,
+    errors,
+    setErrors,
+  } = useAppContext();
   const [progress, setProgress] = useState((activeStep / 2) * 100);
-  const [category, setCategory] = useState("");
-  const [condition, setCondition] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [delivery, setDelivery] = useState(false);
-  const [isAdultContent, setIsAdultContent] = useState(false);
-  const [errors, setErrors] = useState({
-    category: "",
-    condition: "",
-    location: "",
-    description: "",
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let validationErrors = {};
-    if (!category)
-      validationErrors.category = "Category is required.";
-    if (!condition)
+    if (!formData.category) validationErrors.category = "Category is required.";
+    if (!formData.condition)
       validationErrors.condition = "Condition is required.";
-    if (!location)
-      validationErrors.location = "Location is required.";
-    if (!description)
+    if (!formData.location) validationErrors.location = "Location is required.";
+    if (!formData.description)
       validationErrors.description = "Description is required.";
     setErrors(validationErrors);
 
@@ -38,43 +33,17 @@ const Postformsec = () => {
       console.log("Form submitted");
     }
   };
-  const handleChange = (e) => {
-    const { name, value,  checked } = e.target;
-    switch (name) {
-     
-      case 'category':
-        setCategory(value);
-        if (errors.category) setErrors((prev) => ({ ...prev, category: "" }));
-        break;
-      case 'condition':
-        setCondition(value);
-        if (errors.condition) setErrors((prev) => ({ ...prev, condition: "" }));
-        break;
-      case 'location':
-        setLocation(value);
-        if (errors.location) setErrors((prev) => ({ ...prev, location: "" }));
-        break;
-      case 'description':
-        setDescription(value);
-        if (errors.description) setErrors((prev) => ({ ...prev, description: "" }));
-        break;
-      case 'delivery':
-        setDelivery(checked);
-        if (errors.delivery) setErrors((prev) => ({ ...prev, delivery: "" }));
-        break;
-      case 'isAdultContent':
-        setIsAdultContent(checked);
-        if (errors.isAdultContent) setErrors((prev) => ({ ...prev, isAdultContent: "" }));
-        break;
-      default:
-        break;
-    }
-  };
 
+  // const handlePrevious = () => {
+  //   setActiveStep((current) => current - 1);
+  // };
 
-  const handlePrevious = () => {
-    setActiveStep((current) => current - 1);
-  };
+  // const handleNext = () => {
+  //   handleSubmit(new Event("submit"));
+  //   if (Object.keys(errors).length === 0) {
+  //     setActiveStep((current) => current + 1);
+  //   }
+  // };
 
   return (
     <div>
@@ -91,12 +60,16 @@ const Postformsec = () => {
             <p className="text-gray-600 text-sm">
               Did you know? Completing your profile increases your sales.
             </p>
-            <span className="font-semibold text-sm hover:underline cursor-pointer">
+            <Link
+              to={"/profile"}
+              className="font-semibold text-sm hover:underline cursor-pointer"
+            >
               Complete your profile
-            </span>
+            </Link>
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Category */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Category*
@@ -104,16 +77,21 @@ const Postformsec = () => {
               <div className="relative">
                 <select
                   name="category"
-                  value={category}
+                  value={formData.category}
                   onChange={handleChange}
-                  className=" category-select mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
+                  className="category-select mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
                   {categoriesItem.map((category, index) => (
                     <option key={index}>{category}</option>
                   ))}
                 </select>
+                {errors.category && (
+                  <p className="text-red-500 text-xs mt-1">{errors.category}</p>
+                )}
               </div>
             </div>
+
+            {/* Condition */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Condition*
@@ -121,7 +99,7 @@ const Postformsec = () => {
               <div className="relative">
                 <select
                   name="condition"
-                  value={condition}
+                  value={formData.condition}
                   onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 max-h-40 overflow-auto cursor-pointer"
                 >
@@ -129,64 +107,56 @@ const Postformsec = () => {
                     <option key={index}>{condition}</option>
                   ))}
                 </select>
+                {errors.condition && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.condition}
+                  </p>
+                )}
               </div>
             </div>
+
+            {/* Location */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Location
+                Location*
               </label>
               <input
                 name="location"
-                value={location}
+                value={formData.location}
                 onChange={handleChange}
-                className={`mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2  ${
-                  errors.location
-                    ? "border-red-500"
-                    : "border-gray-300"
+                className={`mt-1 block w-full border rounded-md shadow-sm p-2 ${
+                  errors.location ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Entire Nepal"
               />
               {errors.location && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.location}
-                </p>
+                <p className="text-red-500 text-xs mt-1">{errors.location}</p>
               )}
             </div>
+
+            {/* Description */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Location Radius
-              </label>
-              <div className="flex justify-between items-center">
-              <small className=" text-gray-400">Hide my precise location</small>
-              <input
-                name="locationRadius"
-                type="checkbox"
-                checked={''}
-                onChange={handleChange}
-                className="mt-1"
-              />
-              </div>
-          
-              
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Description
+                Description*
               </label>
               <textarea
                 name="description"
-                value={description}
+                value={formData.description}
                 onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                className={`mt-1 block w-full border rounded-md shadow-sm p-2 ${
+                  errors.description ? "border-red-500" : "border-gray-300"
+                }`}
                 rows="3"
                 maxLength="500"
               ></textarea>
-              <div className="flex justify-between items-center">
-              <p>Add all the product or service specifications.</p>
-              <small className="text-gray-500">0/500</small>
-              </div>
-   
+              {errors.description && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.description}
+                </p>
+              )}
             </div>
+
+            {/* Delivery */}
             <div className="flex justify-between items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Delivery
@@ -194,11 +164,13 @@ const Postformsec = () => {
               <input
                 name="delivery"
                 type="checkbox"
-                checked={delivery}
+                checked={formData.delivery}
                 onChange={handleChange}
                 className="mt-1"
               />
             </div>
+
+            {/* Adult Content */}
             <div className="flex justify-between items-center">
               <label className="block text-sm font-medium text-gray-700">
                 Is Adult Content?
@@ -206,7 +178,7 @@ const Postformsec = () => {
               <input
                 name="isAdultContent"
                 type="checkbox"
-                checked={isAdultContent}
+                checked={formData.isAdultContent}
                 onChange={handleChange}
                 className="mt-1"
               />
@@ -214,19 +186,25 @@ const Postformsec = () => {
           </form>
         </div>
       </div>
+
+      {/* Navigation Buttons */}
       <div className="flex justify-between items-center mt-20">
-        <div className="flex items-center justify-around px-2 py-2">
-          <MdArrowBack text="24" className="px-2 text-4xl" />
+        {/* Back Button */}
+        <div className="flex items-center">
+          <MdArrowBack className="text-2xl" />
           <button
-            type="submit"
-            onClick={handlePrevious}
-            className="h-[48px] text-md text-center"
+            type="button"
+            onClick={prevStep}
+            className="ml-2 h-[48px] text-md text-center"
           >
             Back
           </button>
         </div>
+
+        {/* Next Button */}
         <button
-          onClick={handlePrevious}
+          type="button"
+          onClick={nextStep}
           className="w-[30%] h-[48px] text-black border border-gray-400 hover:bg-gray-100 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center"
         >
           Next

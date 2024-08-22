@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useAppContext } from "../../context/Context";
 import PostForm from "./Postform";
 import Postformsec from "./Postformsec";
-import { useStep } from "../../main";
+import Postformthird from "./Postformthird";
+
 
 const Blank = ({ postOpen, handleClose }) => {
-  const {activeStep} = useStep();
-  console.log("🚀 ~ Blank ~ activeStep:", activeStep)
- 
+  const { activeStep } = useAppContext();
+
   return (
     <>
       {postOpen && (
@@ -32,10 +32,14 @@ const Blank = ({ postOpen, handleClose }) => {
                 </svg>
               </button>
             </div>
-            
+
+            {/* Render the correct form based on the active step */}
             {activeStep === 1 && <PostForm />}
             {activeStep === 2 && <Postformsec />}
-        
+            {activeStep === 3 && <Postformthird />}
+            
+            {/* Step Navigation */}
+           
           </div>
         </div>
       )}

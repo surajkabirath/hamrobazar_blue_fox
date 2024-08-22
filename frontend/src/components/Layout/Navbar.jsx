@@ -7,10 +7,10 @@ import { BsChatSquareDots } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import Notifucation from "../NotifiacationMessage/Notification";
 import Blank from "../PostForm/Blank";
-import { useStep } from "../../main";
+import { useAppContext } from "../../context/Context";
 const Navbar = () => {
   const [postOpen, setPostOpen] = useState(false);
-  const {setActiveStep} = useStep();
+  const {setActiveStep} = useAppContext();
   const handleOpen = () => {
     setPostOpen(true);
   };

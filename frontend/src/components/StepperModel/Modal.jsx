@@ -1,70 +1,70 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-import PostFormsec from "../PostForm/Postformsec";
-import PostForm from "../PostForm/Postform";
+// import PostFormsec from "../PostForm/Postformsec";
+// import PostForm from "../PostForm/Postform";
 
 
-const Modal = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    title: "",
-    images: [],
-    category: "",
-    condition: "",
-    location: "",
-    description: "",
-    delivery: false,
-    adultContent: false,
-    price: "",
-    contactDetails: "",
-  });
+// const Modal = () => {
+//   const [step, setStep] = useState(1);
+//   const [formData, setFormData] = useState({
+//     title: "",
+//     images: [],
+//     category: "",
+//     condition: "",
+//     location: "",
+//     description: "",
+//     delivery: false,
+//     adultContent: false,
+//     price: "",
+//     contactDetails: "",
+//   });
 
-  const nextStep = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
+//   const nextStep = () => {
+//     setStep((prevStep) => prevStep + 1);
+//   };
 
-  const prevStep = () => {
-    setStep((prevStep) => prevStep - 1);
-  };
+//   const prevStep = () => {
+//     setStep((prevStep) => prevStep - 1);
+//   };
 
-  const handleChange = (name, value) => {
-    setFormData({ ...formData, [name]: value });
-  };
+//   const handleChange = (name, value) => {
+//     setFormData({ ...formData, [name]: value });
+//   };
 
-  return (
-    <div>
-      {step === 1 && (
-        <PostForm
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-        />
-      )}
-      {step === 2 && (
-        <PostFormsec
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-          prevStep={prevStep}
-        />
-      )}
-      {/* {step === 3 && (
-        <PostFormStep3
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-          prevStep={prevStep}
-        />
-      )}
-      {step === 4 && (
-        <PostFormStep4
-          formData={formData}
-          handleChange={handleChange}
-          prevStep={prevStep}
-        />
-      )} */}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       {step === 1 && (
+//         <PostForm
+//           formData={formData}
+//           handleChange={handleChange}
+//           nextStep={nextStep}
+//         />
+//       )}
+//       {step === 2 && (
+//         <PostFormsec
+//           formData={formData}
+//           handleChange={handleChange}
+//           nextStep={nextStep}
+//           prevStep={prevStep}
+//         />
+//       )}
+//       {/* {step === 3 && (
+//         <PostFormStep3
+//           formData={formData}
+//           handleChange={handleChange}
+//           nextStep={nextStep}
+//           prevStep={prevStep}
+//         />
+//       )}
+//       {step === 4 && (
+//         <PostFormStep4
+//           formData={formData}
+//           handleChange={handleChange}
+//           prevStep={prevStep}
+//         />
+//       )} */}
+//     </div>
+//   );
+// };
 
-export default Modal;
+// export default Modal;
