@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -10,7 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [errors, setErrors] = useState({ name: "", phone: "", password: "" });
-
+const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     let validationErrors = {};
@@ -22,6 +22,8 @@ const Login = () => {
     if (Object.keys(validationErrors).length === 0) {
       // Proceed with form submission (e.g., API call)
       console.log("Form submitted", {  phone, password });
+   
+
     }
   };
 
